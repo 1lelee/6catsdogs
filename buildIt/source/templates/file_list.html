@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{%- block styles %}
+{{ super() }}
+<link href="/static/css/common.css" rel="stylesheet" type="text/css" />
+{% endblock styles -%}
+
+{% block title %}中传放心传-文件列表{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+{% if user %}
+<h1 class="file_h1">Hello, {{ user.username}}!</h1>
+
+<!-- 显示弹窗 -->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="messages-container">
+    {% for message in messages %}
+    {{ message | safe }}
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+{% if files %}
+<h3 class="file_h3 list_title">已上传文件列表：</h3>
+<div class="file-list-container">
+    <ui class="file-list">
+        {% for file in files %}
+        <li>
+            <h3 class="file_h3">file : {{file.file_name}}</h3>
+            <p class="file_description">Description: {{ file.description|safe }}</p>
+            <div style="text-align: center;">
+                <a href="/file/download?filename={{file.file_name}}&type=encrypted">下载</a>
+                <a href="/file/download?filename={{file.file_name}}&type=hashvalue">下载哈希值</a>
+                <a href="/file/download?filename={{file.file_name}}&type=plaintext">解密并下载</a>
+                <a href="/file/download?filename={{file.file_name}}&type=signature">下载签名文件</a>
+            </div>
+        </li>
+        <div class="empty-line"></div>
+        {% endfor %}
+    </ui>
+</div>
+{% else %}
+<p class="file_p">您当前没有上传任何文件</p>
+{% endif %}
+
+<div class="empty-line"></div>
+<p class="upload-link">
+    <a href="{{ url_for('file.get__upload') }}">上传</a>
+</p>
+<script>
+    setTimeout(function () {
+        document.querySelector('.messages-container').style.display = 'none';
+    }, 3000);
+</script>
+
+{% else %}
+<div class="login-content">
+    <div class="login-content_wrapper">
+        <div class="login-title">
+            六人猫狗行
+            <img src="/static/images/6catsdogs.png" style="width:200px; height:auto;">
+        </div>
+        <div class="bd-login-content_title">
+            ♥ 记录每一份热爱 ♥
+        </div>
+    </div>
+
+    <div class="login-content_wrapper">
+        <div class="bd-login-content__subtitle">为你电脑/手机中的文件提供云备份、预览、分享等服务，帮你更便捷安全地管理数据</div>
+    </div>
+
+    <div class="login-button login-content_login">
+        <a href="{{ url_for('auth.login') }}">
+            <button>去登录</button>
+        </a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

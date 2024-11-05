@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}中传放心传-注册{% endblock %}
+
+{% block head %}
+  <script src="{{ url_for('static', filename='jquery/jquery.3.6.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/register.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}">
+  <script src="{{ url_for('static', filename='js/pStrength.js') }}" defer></script>
+{% endblock %}
+
+{% block body %}
+<div class="row mt-4">
+    <div class="col"></div>
+    <div class="col">
+        <center>
+            <div class="login-title">
+                <strong>注册</strong>
+            </div>
+            <div class="login-hint"><br>已有账号，<a href="{{ url_for('auth.login') }}">去登录<br></a>
+            </div>
+            <div class="flash-message">
+                {# Display errors (if there are any). #}
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+            <p>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </p>
+                {% endif %}
+                {% endwith %}
+                {# Render the login form. #}
+            </div>
+        </center>
+        <form method="POST" action="#">
+            <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+            <div class="form-group">
+                {{ form.email.label }}
+                {{ form.email(type="email", class_="form-control") }}
+                <small id="emailHelp" class="form-text text-muted">我们不会把邮箱用于其他用户</small>
+            </div>
+            <div class="form-group">
+                {{ form.captcha.label }}
+                <div class="input-group">
+                    {{ form.captcha(class_="form-control") }}
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="captcha-btn">获取验证码</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form.username.label }}
+                {{ form.username(class_="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label }}
+                <div class="inputBox">
+                    {{ form.password(class_="form-control") }}
+                    <div id="toggle1" onclick="showHide();"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form.password_confirm.label }}
+                <div class="inputBox">
+                    {{ form.password_confirm(class_="form-control") }}
+                    <div id="toggle2"  onclick="showHide();"></div>
+                </div>
+            </div>
+            <p id="check">
+                <span></span><span></span><span></span><span></span>
+            </p>
+            <button type="submit" class="btn btn-primary btn-block">立即注册</button>
+        </form>
+    </div>
+    <div class="col"></div>
+</div>
+
+<script>
+    // 密码显示与隐藏
+    const password = document.getElementById('password')
+    const password_confirm = document.getElementById('password_confirm')
+    const toggle1 = document.getElementById('toggle1')
+    const toggle2 = document.getElementById('toggle2')
+    function showHide () {
+        if (password.type === 'password' || password_confirm.type === 'password'){
+            password.setAttribute( 'type', 'text' )
+            password_confirm.setAttribute( 'type', 'text' )
+            toggle1.classList.add('show')
+            toggle2.classList.add('show')
+        }
+        else{
+            password.setAttribute('type', 'password')
+            password_confirm.setAttribute('type', 'password')
+            toggle1.classList.remove('show')
+            toggle2.classList.remove('show')
+        }
+    }
+</script>
+{% endblock %}

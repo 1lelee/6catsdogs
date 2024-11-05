@@ -1,0 +1,71 @@
+.login-content {
+    max-width: 360px;
+    margin: auto;
+}
+.login-title {
+    text-align: center;
+    font-family: 'YouYuan', '幼圆', sans-serif; 
+    font-size: 24px;
+}
+.login-hint {
+    text-align: center;
+    font-size: 16px;
+}
+
+#check {
+    width: 100%;
+    height: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#check span {
+    height: 100%;
+    width: 22%;
+    margin: 0 5px;
+    background: #ffffff;
+}
+
+.inputBox {
+    position: relative;
+    width: 100%;
+    height: 38px;
+}
+
+.inputBox input {
+    width: 100%;
+    /* 确保 input 宽度填满整个 .inputBox */
+}
+
+/* 添加响应式设计 */
+@media (max-width: 768px) {
+    .inputBox {
+        width: 100%;
+    }
+}
+
+.inputBox input::placeholder {
+    color: #ccc;
+}
+
+#toggle1,
+#toggle2 {
+    position: absolute;
+    top: 50%;
+    right: 1%;
+    /* 使按钮紧贴右侧 */
+    transform: translateY(-50%);
+    /* 垂直居中 */
+    width: 30px;
+    height: 30px;
+    background: url(../images/hide.png);
+    background-size: cover;
+    cursor: pointer;
+}
+
+#toggle1.show,
+#toggle2.show {
+    background: url(../images/show.png);
+    background-size: cover;
+}

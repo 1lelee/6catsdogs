@@ -1,0 +1,69 @@
+diff -ru 6-cats-dogs/buildIt/source/blueprints/file.py fix/buildIt/source/blueprints/file.py
+--- 6-cats-dogs/buildIt/source/blueprints/file.py	2024-07-15 10:19:09.018827000 -0400
++++ fix/buildIt/source/blueprints/file.py	2024-07-15 11:10:05.308423000 -0400
+@@ -7,6 +7,7 @@
+     g,
+     session,
+     render_template_string,
++    json,
+ )
+ from models import File
+ from functools import wraps
+@@ -47,7 +48,7 @@
+     intermediate_template = render_template(
+         "file_list.html", username=user.username, files=files
+     )
+-    return render_template_string(intermediate_template)
++    return intermediate_template
+ 
+ 
+ @file.route("/upload")
+@@ -147,20 +148,20 @@
+ @admin_required
+ def submit_feedback():
+     try:
+-        fb_path = os.path.join(fb_dir, f"feedback_{g.user.username}.pkl")
++        fb_path = os.path.join(fb_dir, f"feedback_{g.user.username}.json")
+ 
+         # 获取前端输入的数据
+         feedback = request.form.get("message")
+-        fb_path = os.path.join(fb_dir, f"feedback_{g.user.username}.pkl")
++        fb_path = os.path.join(fb_dir, f"feedback_{g.user.username}.json")
+ 
+         # 获取前端输入的数据
+         feedback = request.form.get("message")
+         os.makedirs(os.path.dirname(fb_path), exist_ok=True)
+ 
+-        # 保存字节流到 .pkl 文件
+         with open(fb_path, "w") as f:
+             # pickle.dump(feedback, f) 且忘记了序列化
+-            f.write(feedback)
++            # f.write(feedback)
++            json.dump(feedback,f)
+ 
+         print(f"Saved feedback to {fb_path}")
+         session["feedback_submitted"] = True
+@@ -177,14 +178,14 @@
+ @admin_required
+ def view_feedback():
+     try:
+-        fb_path = os.path.join(fb_dir, f"feedback_{g.user.username}.pkl")
++        fb_path = os.path.join(fb_dir, f"feedback_{g.user.username}.json")
+         with open(fb_path, "r") as f:
+             file_content = f.read()
+ 
+         print("file content:{}".format(file_content))
+ 
+-        file_content = urllib.parse.unquote_to_bytes(file_content)
+-        feedback = pickle.loads(file_content)
++        #file_content = urllib.parse.unquote_to_bytes(file_content)
++        feedback = json.loads(file_content)
+         form = FileForm()  # 创建一个表单对象
+ 
+         return render_template("index.html", flag=feedback, form=form)
+Only in fix/buildIt/source/blueprints: __pycache__
+Only in fix/buildIt/source: feedback
+Only in fix/buildIt/source: instance
+Only in fix/buildIt/source/models: __pycache__
+Only in fix/buildIt/source: __pycache__
+Only in fix/buildIt/source: uploads

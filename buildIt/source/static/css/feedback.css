@@ -1,0 +1,74 @@
+.message-board {
+    display: flex;
+    flex-direction: column;
+    /* 子元素垂直排列 */
+    align-items: center;
+    /* 水平居中 */
+    justify-content: center;
+    /* 垂直居中 */
+    height: 70vh;
+    /* 调整高度，确保足够空间 */
+    padding: 20px;
+}
+
+.message-board form {
+    width: 100%;
+    /* 表单宽度全宽 */
+    max-width: 500px;
+    /* 限制最大宽度 */
+    margin-bottom: 10px;
+    /* 表单间隔 */
+}
+
+textarea.input-feedback {
+    width: 100%;
+    /* 文本区域全宽 */
+    height: 150px;
+    /* 设置高度 */
+    padding: 10px;
+    /* 内边距 */
+    border-radius: 5px;
+    /* 边角圆润 */
+    border: 1px solid #ccc;
+    /* 边框样式 */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #FFA500;
+    /* 修改为橙色 */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    /* 圆角 */
+    transition: background-color 0.3s;
+    /* 背景色变化动画 */
+}
+
+button:hover {
+    background-color: #E59400;
+    /* 鼠标悬停时变为深橙色 */
+}
+
+.submit-success {
+    color: green;
+    font-size: 16px;
+    text-align: center;
+    /* 文本居中 */
+    margin: 20px 0;
+    /* 调整间隔 */
+    margin-right: 20px;
+    /* 与按钮之间的间隔 */
+}
+
+.feedback-response {
+    display: flex;
+    /* 启用 Flexbox 布局 */
+    align-items: center;
+    /* 垂直居中对齐子元素 */
+    justify-content: space-between;
+    /* 子元素之间平均分布空间 */
+    margin-top: 10px;
+    /* 与表单之间的间隔 */
+}

@@ -1,0 +1,30 @@
+/* Style adjustments for custom background and footer */
+.bg-custom {
+    background-color: #fdc74a !important; /* Blue background for navigation */
+}
+
+footer {
+    padding: 20px 0;
+    background-color: #f7f7f7; /* Light grey background for footer */
+    text-align: center;
+    color: #666; /* Dark grey text color */
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+/* Setup the body and container-flex to work with Flexbox */
+body, .container-flex {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Flex-grow to fill available space */
+    min-height: 100vh; /* Minimum height to fill the viewport height */
+    margin: 0; /* Remove default margin */
+}
+
+.container-flex {
+    flex: 1; /* Ensure this container takes up all available space */
+}
+
+/* Ensure body background color fills the entire page */
+body {
+    background-color: #f3f3f3; /* Light grey background for the page */
+}

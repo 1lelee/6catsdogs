@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{%- block styles %}
+{{ super() }}
+<link href="/static/css/common.css" rel="stylesheet" type="text/css" />
+<link href="{{ url_for('static', filename='css/feedback.css') }}" rel="stylesheet" type="text/css" />
+{% endblock styles -%}
+
+{% block title %}中传放心传-首页{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+
+{% if user %}
+<h3 class="file_h2" >Hello, {{ user.username}}!</h3>
+<div class="file_h2">
+    <p>
+        <img src="/static/images/6catsdogs.png" style="width:80px; height:auto;">
+        欢迎使用中传放心传！
+    <p>
+    <!-- <p>您的专属云存储与文件管理解决方案。</p>
+    <p>在这里，您可以安全地存储、管理和分享您的文件，体验无忧的数据备份服务。</p> -->
+</div>
+
+<!-- 显示弹窗 -->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="messages-container">
+    {% for message in messages %}
+    {{ message | safe }}
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+<!-- VIP用户特权功能区 -->
+{% if session.is_vip %}
+<div class="message-board">
+    <form id="feedback_form" action="{{ url_for('file.submit_feedback') }}" method="post">
+        <p>{{ form.csrf_token }}</p>
+        <p>vip用户专属功能：可以优先和客服沟通哦~</p>
+        <textarea class="input-feedback" name="message" placeholder="请写下您的问题" rows="4" required></textarea>
+        <button type="submit" id="submit_feedback">提交</button>
+    </form>
+
+    {% if session.get('feedback_submitted', False) %}
+    <p class="submit-success">您的问题已提交！</p>
+
+    <form action="{{ url_for('file.view_feedback') }}" method="post">
+        <p>{{ form.csrf_token }}</p>
+        <button class="view-button">点击查看</button>
+    </form>
+    <p class="view-feedback">{{flag}}</p>
+    {% endif %}
+</div>
+{% endif %}
+
+
+{% else %}
+<div class="login-content">
+    <div class="login-content_wrapper">
+        <div class="login-title">
+            六人猫狗行
+            <img src="/static/images/6catsdogs.png" style="width:200px; height:auto;">
+        </div>
+        <div class="bd-login-content_title">
+            ♥ 记录每一份热爱 ♥
+        </div>
+    </div>
+
+    <div class="login-content_wrapper">
+        <div class="bd-login-content__subtitle">为你电脑/手机中的文件提供云备份、预览、分享等服务，帮你更便捷安全地管理数据</div>
+    </div>
+
+    <div class="login-button login-content_login">
+        <a href="{{ url_for('auth.login') }}">
+            <button>去登录</button>
+        </a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

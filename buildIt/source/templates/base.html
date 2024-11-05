@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> {%- block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap.4.6.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/init.css') }}">{% endblock styles -%} {% block head
+    %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light bg-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/static/images/logo.png" alt="Logo" style="height:30px;">
+                中传放心传
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('home.welcome') }}">首页 <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    {% if user %}
+                    <li class="nav-item">
+                        <span class="nav-link">{{ user.username }}</span>
+                    </li>
+                    <li class="nav-item">
+                        {% if user.is_vip %}
+                        <a class="nav-link" href="{{ url_for('file.get__file') }}">我的文件列表</a>
+                        {% else %}
+                        <a class="nav-link" href="{{ url_for('file.get__file') }}">我的文件列表</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.logout') }}">退出登录</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.login') }}">登录</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.register') }}">注册</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-flex">
+        {% block body %}{% endblock %}
+    </div>
+    <!-- Footer with copyright information -->
+    <footer>
+        <div class="footer-content">
+            &copy; 2024 六人猫狗行. All rights reserved. Built with <a href="http://flask.palletsprojects.com/">Flask</a> &
+            <a href="https://jinja.palletsprojects.com/" target="_blank">Jinja2</a>.
+        </div>
+        <div class="footer-contact">
+            联系我们: <a href="mailto:6catsdogs@cuc.edu.cn"> 6catsdogs@cuc.edu.cn </a> | 电话: + 666 666
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

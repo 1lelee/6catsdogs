@@ -1,0 +1,395 @@
+.messages-container {
+    position: relative;
+    text-align: center;
+    padding: 10px;
+    background-color: #f5e2c3;
+    color: #080000;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.message {
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #f6f07a;
+    color: #150606;
+}
+
+.tip {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.file_body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.file_h1 {
+    text-align: center;
+    color: #333;
+}
+
+.file_h2 {
+    text-align: center;
+    color: #333;
+}
+
+.file_p {
+    text-align: center;
+}
+
+.file-list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #f2bd4c;
+    border-radius: 5px;
+}
+
+.file-list {
+    list-style: none;
+    padding: 0;
+}
+
+.file-list li {
+    margin-bottom: 10px;
+}
+
+.file-list h3 {
+    margin-bottom: 5px;
+}
+
+.file-list a {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #f5dfb3;
+    color: #150606;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.file-list a:hover {
+    background-color: #ffd700;
+    color: #160101;
+}
+
+.upload_body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.file_container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload_h2 {
+    text-align: center;
+    color: #fac283;
+    text-shadow: 2px 2px 4px #140f00;
+    border: 2px solid #c49f35;
+    padding: 10px;
+}
+
+.file_form {
+    text-align: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.upload-btn {
+    background-color: #fbf169;
+    color: #090000;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-btn:hover {
+    background-color: #e0be35;
+}
+
+.file-name {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #555;
+}
+
+p.upload-link {
+    text-align: center;
+}
+
+p.upload-link a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f0ce8a;
+    color: #0b0000;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+p.upload-link a:hover {
+    background-color: #e2b667;
+}
+
+
+/* 调整空行的大小，可以根据需要进行调整 */
+
+.empty-line {
+    margin-top: 20px;
+}
+
+h3.list_title {
+    text-align: center;
+    font-size: 25px;
+    color: #ff6600;
+    margin-top: 20px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* .share_form {
+    width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f3e5d2;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+} */
+
+.file_display {
+    font-size: 16px;
+    color: #555;
+}
+
+.form-check-inline label {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.submit-btn {
+    text-align: center;
+}
+
+.submit-btn input {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #140202;
+    background-color: #ffa500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.error {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.url {
+    font-size: 16px;
+    color: #008000;
+    margin-top: 10px;
+}
+
+.label {
+    font-size: 30px;
+    color: #faa259;
+    text-shadow: 2px 2px 4px #140f00;
+    padding: 10px;
+}
+
+.name {
+    color: #555;
+    font-size: 20px;
+}
+
+/* .share_type {
+    color: #110000;
+    font-size: 15px;
+} */
+
+.btn-download {
+    background-color: #FFA500;
+    color: #FFFFFF;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: px;
+}
+
+.btn-download:hover {
+    background-color: #FF8C00;
+}
+
+#download_e_btn {
+    background-color: #FF4500;
+}
+
+#download_s_btn {
+    background-color: #008000;
+}
+
+#download_hash_btn {
+    background-color: #1E90FF;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.center-form {
+    text-align: center;
+}
+
+.login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+}
+/* 
+.login-button {
+    margin-top: 20px;
+} 
+*/
+
+/* 整个登录界面的内容框架样式
+.login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px; 
+    margin: auto;
+} */
+
+/* 登录内容内的包装器 */
+.login-content_wrapper {
+    margin-bottom: 10px;
+}
+
+/* 登录标题的样式 */
+.login-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333; /* 深灰色文字 */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* 副标题的样式 */
+.bd-login-content_title {
+    font-size: 18px;
+    color: #666; /* 中灰色文字 */
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* 详细描述文字的样式 */
+.bd-login-content__subtitle {
+    font-size: 14px;
+    color: #999; /* 浅灰色文字 */
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* 登录按钮的样式 */
+.login-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.login-button button {
+    background-color: #ffaa00; /* 蓝色按钮背景 */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button button:hover {
+    background-color: #b38300; /* 鼠标悬浮时更深的蓝色 */
+}
+
+input[type="text"] {
+    padding: 8px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #439bfa;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #2767fc;
+}
+
+.flag-style {
+    text-align: center;
+    color: rgb(255, 0, 0);
+    /* 文字颜色 */
+    font-weight: bold;
+    /* 字体加粗 */
+    font-size: 18px;
+    /* 字体大小 */
+    /* background-color: yellow; */
+    /* 背景颜色 */
+    padding: 15px;
+    /* 内边距 */
+    /* border: 1px solid black; */
+    /* 边框 */
+}
+
+.upload_feedback {
+    margin-top: 10px;
+}
+
+.message {
+    color: red; /* 错误消息颜色 */
+    font-size: small;
+}
+
+.file_name_display {
+    margin-left: 10px; /* 根据需要调整外边距 */
+    font-style: italic; /* 斜体文本 */
+}

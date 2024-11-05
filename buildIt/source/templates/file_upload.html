@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}中传放心传-文件上传{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" type="text/css" />
+<script src="{{ url_for('static', filename='js/filename.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="file_container upload_body">
+    <h2 class="file_h2 upload_h2"><b>Upload files</b></h2>
+    <p class="file_p">
+        <!-- 文件上传表单开始 -->
+    <form action="/file/upload" method="post" enctype="multipart/form-data" class="file_form">
+        <label class="upload-btn" for="file">Select File</label>
+        <!-- 注意：这里添加了 onchange 事件处理器 -->
+        <input type="file" id="file" name="file" {% if user.is_vip %}
+            accept=".doc, .docx, .ppt, .pptx, .xls, .xlsx, .pdf, .png, .jpg, .jpeg, .gif, .txt, .mp4, .mp3, .avi, .mkv, .mov"
+            {% else %} accept=".doc, .docx, .ppt, .pptx, .xls, .xlsx, .pdf, .png, .jpg, .jpeg, .gif, .txt" {% endif %}
+            onchange="displayFileName()">
+        <!-- CSRF令牌 -->
+        <p>{{ form.csrf_token }}</p>
+        <!-- 用于显示文件名 -->
+        <span class="file_name_display" id="file_name"></span>
+        <!-- 文件名错误提示信息 -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="upload_feedback">
+            {% for category, message in messages %}
+            <!-- <p class="message {{ category }}">{{ message }}</p> -->
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <div class="description-container">
+            <label for="description" class="description-label">Description</label>
+            <input type="text" name="description" class="file_input">
+        </div>
+        <p class="file_p">
+            <input type="submit" value="Upload">
+        </p>
+    </form>
+    </p>
+</div>
+
+{% endblock %}

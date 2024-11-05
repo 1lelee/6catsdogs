@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}中传放心传-登录{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="row mt-4">
+    <div class="col"></div>
+    <div class="col login-content">
+        <div class="login-title">
+            <strong>登录</strong>
+        </div>
+        <div class="login-hint"><br>还没有账号？
+            <a href="{{ url_for('auth.register') }}">创建账号<br><br></a>
+        </div>
+        <div class="flash-message">
+            {# Display errors (if there are any). #}
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <p>
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </p>
+            {% endif %}
+            {% endwith %}
+            {# Render the login form. #}
+        </div>
+        <form action="" method="post">
+            <div class="form-group">
+                {{ form.username.label }}
+                {{ form.username(class_="form-control") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.password.label }}
+                <div class="inputBox">
+                    {{ form.password(class_="form-control") }}
+                    <div id="toggle1" onclick="showHide();"></div>
+                </div>
+            </div>
+
+            {{ form.csrf_token }}
+            <input class="btn btn-primary btn-block" type="submit" value="登录">
+        </form>
+    </div>
+    <div class="col"></div>
+</div>
+<script>
+    // 密码显示与隐藏
+    const password = document.getElementById('password')
+    const toggle = document.getElementById('toggle1')
+    function showHide() {
+        if (password.type === 'password') {
+            password.setAttribute('type', 'text')
+            toggle.classList.add('show')
+        }
+        else {
+            password.setAttribute('type', 'password')
+            toggle.classList.remove('show')
+        }
+    }
+</script>
+{% endblock %}
